@@ -1,7 +1,12 @@
 #This calculator builds on several resources.
 #A TkInter tutorial from YouTube: https://www.youtube.com/watch?v=_lSNIrR1nZU
 
+#The calculator still needs to actually be built.
+
 from tkinter import *
+import CalculatorFunctions
+import sqlite3
+
 
 BackgroundColour="pink"
 ForegroundColour="brown"
@@ -14,29 +19,28 @@ def SubmitClick():
     output.insert(END,entered_text)
 
 
-def CloseWindowPrompt():
-    #Prompt message to stop the user accidently closing the application
+#CALLING THE WINDOW TO APPEAR - This is absolutely needed to get a window to work with
+window = Tk()
+window.title("Calculator")
+window.configure(background=BackgroundColour)
 
+
+def OpenExitDialog():
     def CloseExitPrompt():
         window2.destroy()
 
-    def CloseMainWindow():
+    def CloseMain():
         window2.destroy()
         window.destroy()
         exit()
 
     window2 = Tk()
     window2.title("Exit prompt")
+
     Label(window2, text="Are you sure you want to close this window?").grid(row=0, columnspan=1, sticky=W)
     Button(window2, text="No", width=6,command=CloseExitPrompt).grid(row=1, column=0, sticky=W)
-    Button(window2,text="Yes",width=6,command=CloseMainWindow).grid(row=1, column=1, sticky=W)
+    Button(window2,text="Yes",width=6,command=CloseMain).grid(row=1, column=1, sticky=W)
     window2.mainloop()
-
-#CALLING THE WINDOW TO APPEAR - This is absolutely needed to get a window to work with
-window = Tk()
-window.title("Calculator")
-window.configure(background=BackgroundColour)
-
 
 #Importing a file
 #photo=PhotoImage(file="")
@@ -60,7 +64,7 @@ output = Text(window, width=75, height=6, wrap=WORD, bg=BackgroundColour)
 output.grid(row=4,column=0, sticky=W)
 
 #Exit button
-Button(window, text="Exit", width=6, command=CloseWindowPrompt).grid(row=5, column=0, sticky=E)
+Button(window, text="Exit", width=6, command=OpenExitDialog).grid(row=5, column=0, sticky=E)
 
 #Make the window appear - This is needed so the window actually shows up.
 window.mainloop()
