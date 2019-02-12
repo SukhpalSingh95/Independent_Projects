@@ -26,6 +26,7 @@ public class HelloWorld {
     * byte, short, char, boolean, int, float, double and long
     * */
 
+    UserInputTut userInputTut;
 
     /*
      *
@@ -42,6 +43,10 @@ public class HelloWorld {
     * if you are going to make many changes on a string, it would be better to use a stringbuilder.
     * There is also the option to use a stringBuffer, but that is more related to threads.
     *
+    * */
+
+    /*
+    * You can have an array of objects. this stops you from needing a single array of a particular type.
     * */
 
 
@@ -85,11 +90,7 @@ public class HelloWorld {
             arrayList1.add(Integer.toString(x));
             System.out.println(arrayList1.get(x));
         }
+
+
     }
-
-
-
-
-
-
 }
